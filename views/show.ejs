@@ -1,0 +1,19 @@
+<%- include("./partials/header") %>
+
+<div class="container">
+<center>
+	<h1>
+		Search for Items
+	</h1>
+	<form action="/grocery" method="GET" class="form-inline">
+		<div class="form-group">
+			<input type="text" name="search" placeholder="Grocery search..." class="form-control">
+			<input type="submit" class="btn btn-default">
+		</div>
+	</form><br><br>
+		<a href="/grocery">View Items</a>
+</center>
+</div>
+
+
+<%- include("./partials/footer") %>

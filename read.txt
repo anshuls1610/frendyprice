@@ -1,0 +1,4 @@
+mongoimport --uri mongodb+srv://user:anshul@cluster0.mug1l.mongodb.net/warehouse --collection groceries --file 25
+data.json --jsonArray
+
+mongoimport --db warehouse --collection groceries--file C:\Mongo_Import_Export\warehouse_umongo_production_bkp_feb28.json --jsonArray

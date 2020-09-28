@@ -1,0 +1,98 @@
+<%- include("../partials/header") %>
+<center>
+	<h2>Groceries</h2>
+	<hr>
+</center>
+
+<div id="solution_finder">
+  <h1 style="font-size:27px; margin-top:45px; margin-left:40px; font-weight:normal;"> Product Filter </h1>
+  <ul id="filters" style="list-style:none; margin-top:25px; line-height:30px; ">
+    <li>
+      <input type="checkbox" value="all" checked="checked" id="all" style="display:none;">
+	  </li>
+     <li>
+      <input type="checkbox" value="500g" id="500g">
+      <label for="500g">500g</label>
+    </li>
+    <li>
+      <input type="checkbox" value="1kg" id="1kg">
+      <label for="1kg">1kg</label>
+    </li>
+    <li>
+      <input type="checkbox" value="5kg" id="5kg">
+      <label for="5kg">5kg</label>
+    </li>
+    <li>
+      <input type="checkbox" value="2kg" id="2kg">
+      <label for="2kg">2kg</label>
+    </li>
+    
+  </ul>
+   <div style="margin-left:43px;">
+  <select id="genre">
+    <option value="all">All</option>
+    <option value="JioMart">JioMart</option>
+    <option value="Grofers">Grofers</option>
+  </select>
+
+</div>
+</div>
+
+
+
+
+<div class="coloumn">
+<div class="row">
+<div class="col-md-6">
+<table class="table text-center">
+	<thead>
+		<tr>
+			<th><center>Date</center></th>
+			<th><center>Website</center></th>
+			<th><center>Item</center></th>
+			<th><center>Quantity</center></th>
+			<th><center>Price</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% itemsFre.forEach(function(item){ %>
+	<tr>
+		<td class="category <%= item.Website %> <%= item.Quantity %> <%= item.Date %> all"><center><%= item.Date %></center></td>
+		<td class="category <%= item.Website %> <%= item.Quantity %> <%= item.Date %> all"><center><%= item.Website %></center></td>
+		<td class="category <%= item.Website %> <%= item.Quantity %> <%= item.Date %> all"><center><%= item.Item %></center></td>
+		<td class="category <%= item.Website %> <%= item.Quantity %> <%= item.Date %> all"><center><%= item.Quantity %></center></td>
+		<td class="category <%= item.Website %> <%= item.Quantity %> <%= item.Date %> all"><center><%= item.Price %></center></td>
+	</tr>
+		<% }) %>
+	</tbody>
+</table>
+</div>
+<div class="col-md-6">
+	
+
+<table class="table text-center">
+	<thead>
+		<tr>
+			<th><center>Date</center></th>
+			<th><center>Website</center></th>
+			<th><center>Item</center></th>
+			<th><center>Quantity</center></th>
+			<th><center>Price</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% itemsOth.forEach(function(item){ %>
+	<tr>
+		<td><center><%= item.Date %></center></td>
+		<td><center><%= item.Website %></center></td>
+		<td><center><%= item.Item %></center></td>
+		<td><center><%= item.Quantity %></center></td>
+		<td><center><%= item.Price %></center></td>
+	</tr>
+		<% }) %>
+	</tbody>
+</table>
+</div>
+	</div>
+		</div>
+<%- include("../partials/footer") %>
