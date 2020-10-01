@@ -16,14 +16,14 @@ router.get('/', (req, res) =>{
 					 noMatch = "No search found, please try again.";
 				}
 				const miniSearch = new MiniSearch({
-  				fields: ['Item'], // fields to index for full-text search
+  				fields: ['Item', 'Date'], // fields to index for full-text search
   				storeFields: ['Date','Website','Item','Quantity','Price'], // fields to return with search results
 				})
 				miniSearch.addAll(allItems)
-				const resultFre = miniSearch.search(req.query.search, {
+				const resultFre = miniSearch.search(req.query.search || req.query.date, {
 					filter: (resultFre) => resultFre.Website === 'Frendy'
 				})
-				const resultOth = miniSearch.search(req.query.search,{
+				const resultOth = miniSearch.search(req.query.search || req.query.date,{
 					filter: (resultFre) => resultFre.Website !== 'Frendy'
 				})
 				res.render('items/index', {itemsFre: resultFre, itemsOth: resultOth, noMatch: noMatch});
