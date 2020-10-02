@@ -2,12 +2,16 @@
 
 $(document).ready(function(){
 	
-	$('input[type="checkbox"]').on('change', function() {
-   	$(this).siblings('input[type="checkbox"]').prop('checked', false);
+		$('#fweight, #fvolume').change(function(evt){
+		var filter = $('#fweight, #fvolume').map(function(index, el) {
+			return "." + el.value;
+		}).toArray().join("");
+		console.log(filter)
+		$(".fquantity").hide().filter(filter).show();
 	});
 	
-	$(':input').change(function(evt){
-		var filter = $(':input:checked,select').map(function(index, el) {
+	$('#site, #oweight, #ovolume').on('change', function(event){
+		var filter = $('#site, #oweight, #ovolume').map(function(index, el) {
 			return "." + el.value;
 		}).toArray().join("");
 		console.log(filter)

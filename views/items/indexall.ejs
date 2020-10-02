@@ -3,74 +3,59 @@
 <center><h2>Product Filter</h2><hr></center>
 
 <div class="container">
+	<center>
+	<form action="/grocery" method="GET" class="form-inline">
+		<div class="form-group">
+			<input type="text" name="search" placeholder="Grocery search..." class="form-control">
+			<input type="date" name="date" class="form-control">
+			<input type="submit" class="btn btn-default">
+		</div>
+	</form>
+	</center>
+</div><hr>
+
+<div class="container">
 	<div class="coloumn">
 		<div class="row">
 			<center>
 			<div class="col-md-6">
-				<input type="checkbox" value="all" checked="checked" id="all" style="display:none">
-				<div id="filters" style="line-height:30px;">
-					<h4>Quantity Filter: </h4>
-					<div style="float: left;">
-						<h5>Filter in Grams </h5>
-						<input type="checkbox" value="100g" id="100g">
-						<label for="100g"> 100g</label>
-						
-						<input type="checkbox" value="200g" id="200g">
-						<label for="200g"> 200g</label>
-						
-						<input type="checkbox" value="500g" id="500g">
-						<label for="500g"> 500g</label>
-
-						<input type="checkbox" value="1kg" id="1kg">
-						<label for="1kg"> 1kg</label>
-						
-						<input type="checkbox" value="2kg" id="2kg">
-						<label for="2kg"> 2kg</label>
-
-						<input type="checkbox" value="5kg" id="5kg">
-						<label for="5kg"> 5kg</label>
-
-						<input type="checkbox" value="10kg" id="10kg">
-						<label for="10kg"> 10kg</label>
-						
-						<h5>Filter in Litre </h5>
-					
-						<input type="checkbox" value="200ml" id="200ml">
-						<label for="200ml"> 200ml</label>
-						
-						<input type="checkbox" value="500ml" id="500ml">
-						<label for="500ml"> 500ml</label>
-
-						<input type="checkbox" value="1kl" id="1l">
-						<label for="1l"> 1l</label>
-
-						<input type="checkbox" value="5l" id="5l">
-						<label for="5l"> 5l</label>
-
-						<input type="checkbox" value="10l" id="10l">
-						<label for="10l"> 10l</label>
-						
-						<input type="checkbox" value="15l" id="15l">
-						<label for="15l"> 15l</label>
-					</div>
+				<label for="others_weight">Weight Filter: </label>
+				<select name="others_weight" id="oweight">
+					<option value="all_others">All</option>
+					<option value="100g" >100g</option>
+					<option value="200g">200g</option>
+					<option value="500g">500g</option>
+					<option value="1kg">1kg</option>
+					<option value="2kg">2kg</option>
+					<option value="5kg">5kg</option>
+					<option value="10kg">10kg</option>
+				</select><br><br>
+				<label for="others_volume">Voulme Filter: </label>
+				<select name="others_volume" id="ovolume">
+					<option value="all_others">All</option>
+					<option value="100ml">100ml</option>
+					<option value="200ml" >200ml</option>
+					<option value="500ml">500ml</option>
+					<option value="1l">1l</option>
+					<option value="5l">5l</option>
+					<option value="10l">10l</option>
+					<option value="15l">15l</option>
+				</select>
 				</div>
-			</div>
 			</center>
 			<center>
 			<div class="col-md-6">
-				<h4>Website Filter: </h4>
-				<div>
-					<select id="genre">
-						<option value="all">All</option>
-						<option value="Frendy">Frendy</option>
-						<option value="JioMart">JioMart</option>
-						<option value="Grofers">Grofers</option>
-						<option value="Dmart">Dmart</option>
-						<option value="DealShare">DealShare</option>
-						<option value="Sanandsupermall">Sanandsupermall</option>
-						<option value="MehsanaMart">MehsanaMart</option>
-					</select>
-				</div>
+				<label for="site">Website Filter: </label>
+				<select name="site" id="site">
+					<option value="all_others">All</option>
+					<option value="Frendy">Frendy</option>
+					<option value="JioMart">JioMart</option>
+					<option value="Grofers">Grofers</option>
+					<option value="Dmart">Dmart</option>
+					<option value="DealShare">DealShare</option>
+					<option value="Sanandsupermall">Sanandsupermall</option>
+					<option value="MehsanaMart">MehsanaMart</option>
+				</select>
 			</div>
 			</center>
 		</div>
@@ -94,11 +79,11 @@
 				<tbody>
 					<% items.forEach(function(item){ %>
 				<tr>
-					<td class="category <%= item.Website %> <%= item.Quantity %> all"><center><%= item.Date %></center></td>
-					<td class="category <%= item.Website %> <%= item.Quantity %> all"><center><%= item.Website %></center></td>
-					<td class="category <%= item.Website %> <%= item.Quantity %> all"><center><%= item.Item %></center></td>
-					<td class="category <%= item.Website %> <%= item.Quantity %> all"><center><%= item.Quantity %></center></td>
-					<td class="category <%= item.Website %> <%= item.Quantity %> all"><center><%= item.Price %></center></td>
+					<td class="category <%= item.Website %> <%= item.Quantity %> all_others"><center><%= item.Date %></center></td>
+					<td class="category <%= item.Website %> <%= item.Quantity %> all_others"><center><%= item.Website %></center></td>
+					<td class="category <%= item.Website %> <%= item.Quantity %> all_others"><center><%= item.Item %></center></td>
+					<td class="category <%= item.Website %> <%= item.Quantity %> all_others"><center><%= item.Quantity %></center></td>
+					<td class="category <%= item.Website %> <%= item.Quantity %> all_others"><center><%= item.Price %></center></td>
 				</tr>
 					<% }) %>
 				</tbody>

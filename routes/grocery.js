@@ -5,9 +5,12 @@ const MiniSearch = require('minisearch');
 
 router.get('/', (req, res) =>{
 	var noMatch = null;
-	if(req.query.search || req.query.date) {
+	var date = req.query.date;
+	const newdate = date.split("-").reverse().join("-");
+	
+	if(req.query.search || newdate) {
         const regex = new RegExp(escapeRegex((req.query.search)), 'gi');
-		const regexx = new RegExp(escapeRegex((req.query.date)), 'gi');
+		const regexx = new RegExp(escapeRegex((newdate)), 'gi');
     	Grocery.find({$and: [{Item: regex}, {Date: regexx}]}, (err, allItems) => {
 			if(err){
 				console.log(err);
@@ -20,10 +23,10 @@ router.get('/', (req, res) =>{
   				storeFields: ['Date','Website','Item','Quantity','Price'], // fields to return with search results
 				})
 				miniSearch.addAll(allItems)
-				const resultFre = miniSearch.search(req.query.search || req.query.date, {
+				const resultFre = miniSearch.search(req.query.search || newdate, {
 					filter: (resultFre) => resultFre.Website === 'Frendy'
 				})
-				const resultOth = miniSearch.search(req.query.search || req.query.date,{
+				const resultOth = miniSearch.search(req.query.search || newdate,{
 					filter: (resultFre) => resultFre.Website !== 'Frendy'
 				})
 				res.render('items/index', {itemsFre: resultFre, itemsOth: resultOth, noMatch: noMatch});
